@@ -1,7 +1,7 @@
 ## Matrix Representation of LIF
 
 Single neuron의 LIF 모델은 다음과 같은 식으로 표현된다.
-($V$: 막전위, $\tau$: 불응기 상수, $E_0$: 휴지 전위, $I_o$: 유입 전류, $R$: 전압, $dQ$: 유입 전하량)
+($V$: 막전위, $\tau$: 불응기 상수, $E_0$: 휴지 전위, $I_o$: 유입 전류, $R$: 저항)
 
 $$ \frac {dV}{dt} = \frac {1} {\tau} (E_0-V+I_o R) $$
 
@@ -27,10 +27,10 @@ $$
 
 이를 행렬로 표현하면 다음과 같다.
 $$
-for \;\mathbf x = \begin{pmatrix} V \\ I_o\end{pmatrix}, \quad V_{\text{next}} =\begin{pmatrix}  1-\frac {dt}{\tau} ,& \frac{dt}{\tau} \end{pmatrix} \mathbf x
+for \;\mathbf x = \begin{pmatrix} V \\ I_o\end{pmatrix}, \quad V_{\text{next}} =\begin{pmatrix}  1-\frac {dt}{\tau} ,& \frac{Rdt}{\tau} \end{pmatrix} \mathbf x
 $$
 그러므로, 다음 행렬을 정의하자
-$$ M_V = \begin{pmatrix}  1-\frac {dt}{\tau} ,& \frac{dt}{\tau} \end{pmatrix}, \quad V_{\text{next}} = M_V \mathbf x$$
+$$ M_V = \begin{pmatrix}  1-\frac {dt}{\tau} ,& \frac{Rdt}{\tau} \end{pmatrix}, \quad V_{\text{next}} = M_V \mathbf x$$
 
 여러 뉴런($1, 2, \dots, i$)의 다음 전위를 구하려면 다음을 이용할 수 있다.
 $$
